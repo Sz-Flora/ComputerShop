@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComputerShop.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,14 @@ namespace ComputerShop
     /// </summary>
     public partial class Page1 : Page
     {
+        IDatabase _database = new Users();
         public Page1()
         {
             InitializeComponent();
+        }
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(_database.GetData(usernameTextBox.Text, passwordTextBox.Password).ToString());    
         }
     }
 }

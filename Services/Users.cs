@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,9 +28,21 @@ namespace ComputerShop.Services
 
             string sql = "SELECT * FROM users WHERE UserName = @username AND Password = @password";
 
+            MySqlCommand cmd = new MySqlCommand(sql, conn._connection);
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue ("@password", password);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            string result = "";
+            if (reader.Read() == true)
+                result = "Regisztrált tag";
+            else
+                result = "Nem regisztrált tag";
+
             conn._connection.Close();
 
-            return new { message = " " };
+            return new { message = result };
         }
     }
 }
