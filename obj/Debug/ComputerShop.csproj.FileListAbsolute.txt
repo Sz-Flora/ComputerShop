@@ -1,0 +1,17 @@
+C:\Users\szabof\backend\ComputerShop\bin\Debug\ComputerShop.exe.config
+C:\Users\szabof\backend\ComputerShop\bin\Debug\ComputerShop.exe
+C:\Users\szabof\backend\ComputerShop\bin\Debug\ComputerShop.pdb
+C:\Users\szabof\backend\ComputerShop\obj\Debug\ComputerShop.csproj.AssemblyReference.cache
+C:\Users\szabof\backend\ComputerShop\obj\Debug\MainWindow.g.cs
+C:\Users\szabof\backend\ComputerShop\obj\Debug\App.g.cs
+C:\Users\szabof\backend\ComputerShop\obj\Debug\ComputerShop_MarkupCompile.cache
+C:\Users\szabof\backend\ComputerShop\obj\Debug\ComputerShop_MarkupCompile.lref
+C:\Users\szabof\backend\ComputerShop\obj\Debug\MainWindow.baml
+C:\Users\szabof\backend\ComputerShop\obj\Debug\ComputerShop.g.resources
+C:\Users\szabof\backend\ComputerShop\obj\Debug\ComputerShop.Properties.Resources.resources
+C:\Users\szabof\backend\ComputerShop\obj\Debug\ComputerShop.csproj.GenerateResource.cache
+C:\Users\szabof\backend\ComputerShop\obj\Debug\ComputerShop.csproj.CoreCompileInputs.cache
+C:\Users\szabof\backend\ComputerShop\obj\Debug\ComputerShop.exe
+C:\Users\szabof\backend\ComputerShop\obj\Debug\ComputerShop.pdb
+C:\Users\szabof\backend\ComputerShop\obj\Debug\Page1.g.cs
+C:\Users\szabof\backend\ComputerShop\obj\Debug\Page1.baml
