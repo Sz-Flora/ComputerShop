@@ -21,14 +21,26 @@ namespace ComputerShop
     /// </summary>
     public partial class Page1 : Page
     {
+        MainWindow _mainWindow;
         IDatabase _database = new Users();
-        public Page1()
+        public Page1(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
         }
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(_database.GetData(usernameTextBox.Text, passwordTextBox.Password).ToString());    
+            if (_database.GetData(usernameTextBox.Text, passwordTextBox.Password))
+            {
+                _mainWindow.MainFrame.Navigate(new Page3(_mainWindow));
+            }
+            else
+                MessageBox.Show("Még nem regisztrált tag.");
+        }
+
+        private void regLink_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindow.MainFrame.Navigate(new Page2(_mainWindow));
         }
     }
 }

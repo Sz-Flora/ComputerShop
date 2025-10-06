@@ -21,15 +21,18 @@ namespace ComputerShop
     /// </summary>
     public partial class Page2 : Page
     {
+        MainWindow _mainWindow;
         IDatabase _database = new Users();
-        public Page2()
+        public Page2(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
         }
 
         private void regButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(_database.AddRecord(usernameTextBox.Text, passwordTextBox.Password, emailTextBox.Text, fullnameTextBox.Text).ToString());
+            _mainWindow.MainFrame.Navigate(new Page1(_mainWindow));
         }
     }
 }

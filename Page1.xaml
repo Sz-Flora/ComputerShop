@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ComputerShop"
       mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="500"
+      d:DesignHeight="550" d:DesignWidth="550"
       Title="Login"
       Background="White">
 
@@ -14,7 +14,8 @@
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -56,7 +57,13 @@
             Grid.Column="1"
             FontSize="15"
             />
-        <StackPanel Grid.Row="3" Grid.Column="1" Margin="20">
+        <StackPanel Grid.Row="4" Grid.Column="1" Margin="20">
+            <TextBlock HorizontalAlignment="Right" FontSize="15px" FontFamily="Calibri" FontWeight="Bold" Padding="5">
+                <Hyperlink x:Name="regLink" 
+                           Click="regLink_Click">
+                    Regisztrálok
+                </Hyperlink>
+            </TextBlock>
             <Button
                    x:Name="loginButton"
                    Content="Belépés"

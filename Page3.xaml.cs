@@ -21,12 +21,13 @@ namespace ComputerShop
     /// </summary>
     public partial class Page3 : Page
     {
+        MainWindow _mainWindow;
         IDatabase _database = new Users();
-        public Page3()
+        public Page3(MainWindow mainWindow)
         {
             InitializeComponent();
             usersDataGrid.ItemsSource = _database.GetAllData();
-
+            _mainWindow = mainWindow;
         }
     }
 }

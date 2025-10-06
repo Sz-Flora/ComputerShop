@@ -49,7 +49,7 @@ namespace ComputerShop.Services
             return dt.DefaultView;
         }
 
-        public object GetData(string username, string password)
+        public bool GetData(string username, string password)
         {
             conn._connection.Open();
 
@@ -61,15 +61,17 @@ namespace ComputerShop.Services
 
             MySqlDataReader reader = cmd.ExecuteReader();
 
-            string result = "";
-            if (reader.Read() == true)
-                result = "Regisztrált tag";
+            if (reader.Read())
+            {
+                conn._connection.Close();
+                return true;
+            }
             else
-                result = "Nem regisztrált tag";
-
-            conn._connection.Close();
-
-            return new { message = result };
+            {
+                conn._connection.Close();
+                return false;
+            }
+            
         }
     }
 }
