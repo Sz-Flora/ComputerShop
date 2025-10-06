@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,15 +32,21 @@ namespace ComputerShop.Services
             return new { message = "Sikeres regisztráció!" };
         }
 
-        public ICollection<object> GetAllData()
+        public DataView GetAllData()
         {
-            ICollection<object> data = new List<object>();
-
             conn._connection.Open();
+
+            string sql = "SELECT * FROM users";
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn._connection);
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
 
             conn._connection.Close();
 
-            return data;
+            return dt.DefaultView;
         }
 
         public object GetData(string username, string password)

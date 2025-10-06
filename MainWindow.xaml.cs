@@ -23,7 +23,7 @@ namespace ComputerShop
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Page1());
+            MainFrame.Navigate(new Page3());
         }
     }
 }

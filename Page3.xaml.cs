@@ -17,19 +17,16 @@ using System.Windows.Shapes;
 namespace ComputerShop
 {
     /// <summary>
-    /// Interaction logic for Page2.xaml
+    /// Interaction logic for Page3.xaml
     /// </summary>
-    public partial class Page2 : Page
+    public partial class Page3 : Page
     {
         IDatabase _database = new Users();
-        public Page2()
+        public Page3()
         {
             InitializeComponent();
-        }
+            usersDataGrid.ItemsSource = _database.GetAllData();
 
-        private void regButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(_database.AddRecord(usernameTextBox.Text, passwordTextBox.Password, emailTextBox.Text, fullnameTextBox.Text).ToString());
         }
     }
 }

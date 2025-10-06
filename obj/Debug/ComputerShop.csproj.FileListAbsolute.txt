@@ -48,3 +48,7 @@ C:\Users\szabof\backend\ComputerShop\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\szabof\backend\ComputerShop\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\szabof\backend\ComputerShop\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\szabof\backend\ComputerShop\obj\Debug\Computer.0350A5DA.Up2Date
+C:\Users\szabof\backend\ComputerShop\obj\Debug\Page2.g.cs
+C:\Users\szabof\backend\ComputerShop\obj\Debug\Page2.baml
+C:\Users\szabof\backend\ComputerShop\obj\Debug\Page3.g.cs
+C:\Users\szabof\backend\ComputerShop\obj\Debug\Page3.baml
