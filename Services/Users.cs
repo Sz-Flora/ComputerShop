@@ -59,18 +59,20 @@ namespace ComputerShop.Services
         {
             conn._connection.Open();
 
-            string sql = "SELECT * FROM users WHERE UserName = @username AND Password = @password";
+            string sql = "SELECT * FROM users WHERE UserName = @username";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn._connection);
             cmd.Parameters.AddWithValue("@username", username);
-            cmd.Parameters.AddWithValue("@password", password);
 
             MySqlDataReader reader = cmd.ExecuteReader();
 
             if (reader.Read())
             {
+                string storedHash = reader.GetString(3);
+                string storedSalt = reader.GetString(6);
+                string compteHash = ComputerHmacSha256(password, storedHash);
                 conn._connection.Close();
-                return true;
+                return storedHash == compteHash;
             }
             else
             {

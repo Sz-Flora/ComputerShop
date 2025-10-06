@@ -29,5 +29,15 @@ namespace ComputerShop
             usersDataGrid.ItemsSource = _database.GetAllData();
             _mainWindow = mainWindow;
         }
+
+        private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdateUserButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

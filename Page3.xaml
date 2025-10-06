@@ -9,6 +9,34 @@
       Title="Page3">
 
     <Grid>
-        <DataGrid x:Name="usersDataGrid" Margin="20"/>
+        <DataGrid x:Name="usersDataGrid" Margin="20"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"                
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Felhasználónév" Binding="{Binding UserName}"/>
+                <DataGridTextColumn Header="Teljesnév" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Regisztráció" Binding="{Binding RegTime}"/>
+
+                <DataGridTemplateColumn Header="Töröl">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="X" x:Name="DeleteUserButton" Foreground="White" Background="Red" FontWeight="bold" FontSize="15" Click="DeleteUserButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Módosít">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="M" x:Name="UpdateUserButton" Foreground="White" Background="Black" FontWeight="bold" FontSize="15" Click="UpdateUserButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
