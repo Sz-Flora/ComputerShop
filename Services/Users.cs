@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,15 +16,20 @@ namespace ComputerShop.Services
 
         public object AddRecord(string username, string password, string email, string fullname)
         {
+            string salt = GenerateSalt();
+            
+            string hashedPassword = ComputerHmacSha256(password, salt);
+
             conn._connection.Open();
 
-            string sql = "INSERT INTO `users` (`UserName`, `FullName`, `Password`, `Email`) VALUES (@username, @fullname, @password, @email)";
+            string sql = "INSERT INTO `users` (`UserName`, `FullName`, `Password`, `Email`, `Salt`) VALUES (@username, @fullname, @password, @email, @salt)";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn._connection);
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@fullname", fullname);
-            cmd.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@password", hashedPassword);
             cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@salt", salt);
 
             cmd.ExecuteNonQuery();
 
@@ -57,7 +63,7 @@ namespace ComputerShop.Services
 
             MySqlCommand cmd = new MySqlCommand(sql, conn._connection);
             cmd.Parameters.AddWithValue("@username", username);
-            cmd.Parameters.AddWithValue ("@password", password);
+            cmd.Parameters.AddWithValue("@password", password);
 
             MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -71,7 +77,27 @@ namespace ComputerShop.Services
                 conn._connection.Close();
                 return false;
             }
-            
+        }
+
+        public string GenerateSalt()
+        {
+            byte[] salt = new byte[16];
+
+            using (var rnd = RandomNumberGenerator.Create()) 
+            { 
+                rnd.GetBytes(salt);
+            }
+
+            return Convert.ToBase64String(salt);
+        }
+
+        public string ComputerHmacSha256(string password, string salt)
+        {
+            using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(salt)))
+            {
+                byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(hash);
+            }
         }
     }
 }
