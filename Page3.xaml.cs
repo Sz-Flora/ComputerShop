@@ -1,6 +1,7 @@
 ﻿using ComputerShop.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,11 @@ namespace ComputerShop
 
         private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if(usersDataGrid.SelectedItem is DataRowView item)
+            {
+                MessageBox.Show(_database.DeleteUser(item["Id"]).ToString());
+                usersDataGrid.ItemsSource = _database.GetAllData();
+            }
         }
 
         private void UpdateUserButton_Click(object sender, RoutedEventArgs e)
